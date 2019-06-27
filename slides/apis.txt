@@ -1,0 +1,21 @@
+POST -> http://localhost:8080/v1/match
+
+{
+	"duration": 3,
+    "numberOfPlayers": 5,
+	"typeOfMatch": "Tournament"
+}
+
+
+GET -> http://localhost:8080/v1/match
+
+
+POST -> http://localhost:8080/v1/match/{code}
+
+{
+    "code": "5d1442bd0ec6571bacc67bdb",
+    "duration": 3,
+    "numberOfPlayers": 6,
+    "typeOfMatch": "Tournament",
+    "description": null
+}
