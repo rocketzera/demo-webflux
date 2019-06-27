@@ -32,8 +32,9 @@ public class MatchService implements IMatchService {
     public Mono<MatchDTO> enterInExistingMatch(String code) {
         Mono<MatchEntity> publisher = repository.findById(code)
                 .filter(this::checkPreConditionalsToEnterInExistingMatch)
-                .switchIfEmpty(Mono.<MatchEntity>error(new RuntimeException("Match is over or limit of players exceed!")))
+                .switchIfEmpty(Mono.error(new RuntimeException("Match is over or limit of players exceed!")))
                 .flatMap(this::saveAndAddPlayer);
+        publisher.subscribe(System.out::println);
         return publisher.map(MatchDTO::new);
     }
 
